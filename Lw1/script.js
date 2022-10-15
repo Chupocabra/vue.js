@@ -1,9 +1,11 @@
 const typeSelector = document.querySelector(".types");
-
+//тип величин по умолчанию
 let thisType = "time";
 
-typeSelector.addEventListener('click', e => changeType(e))
-
+typeSelector.addEventListener('click', e => changeType(e));
+//Функция дял смены величин
+//
+//принимает вызвавший ее div, меняет текущий тип величин
 function changeType(e){
     if(e.target.id !== ""){
         let newType = "#". concat(e.target.id);
@@ -18,9 +20,9 @@ function changeType(e){
         thisType = e.target.id;
     }
 }
-
+//для смены полей местами
 const reverseValues = document.querySelectorAll(".revert");
-
+//поля для времени
 const timeInputField = document.querySelector("#timeInputField");
 const timeInputType = document.querySelectorAll(".selectInpValue")[0];
 const timeOutputType = document.querySelectorAll(".selectOutValue")[0];
@@ -77,7 +79,7 @@ let time = new Vue ({
 timeInputField.addEventListener('keyup', timeInputChanged);
 timeInputType.addEventListener('click', timeInputChanged);
 timeOutputType.addEventListener('click', timeInputChanged);
-
+//Конвертирует величины
 function timeInputChanged(){
     time.introducedTime = timeInputField.value;
     let line = "time._" + timeInputType.options.selectedIndex + "ToSec";
@@ -85,7 +87,7 @@ function timeInputChanged(){
     line = "time.secTo_" + timeOutputType.options.selectedIndex;
     timeOutputField.value = eval(line);
 }
-
+//Вызывается по кнопке поменять, меняет поля местами
 reverseValues[0].addEventListener('click', function(){
     let put = timeInputField.value;
     timeInputField.value = timeOutputField.value;
@@ -94,7 +96,7 @@ reverseValues[0].addEventListener('click', function(){
     timeInputType.options.selectedIndex = timeOutputType.options.selectedIndex;
     timeOutputType.options.selectedIndex = put;
 })
-
+//поля для дистанции
 const distanceInputField = document.querySelector("#distanceInputField");
 const distanceInputType = document.querySelectorAll(".selectInpValue")[1];
 const distanceOutputType = document.querySelectorAll(".selectOutValue")[1];
@@ -157,7 +159,7 @@ let distance = new Vue ({
 distanceInputField.addEventListener('keyup', distanceInputChanged);
 distanceInputType.addEventListener('click', distanceInputChanged);
 distanceOutputType.addEventListener('click', distanceInputChanged);
-
+//Конвертирует величины
 function distanceInputChanged(){
     distance.introducedDistance = distanceInputField.value;
     let line = "distance._" + distanceInputType.options.selectedIndex + "ToMm";
@@ -165,7 +167,7 @@ function distanceInputChanged(){
     line = "distance.mmTo_" + distanceOutputType.options.selectedIndex;
     distanceOutputField.value = eval(line);
 }
-
+//Вызывается по кнопке поменять, меняет поля местами
 reverseValues[1].addEventListener('click', function(){
     let put = distanceInputField.value;
     distanceInputField.value = distanceOutputField.value;
@@ -188,12 +190,12 @@ let temperature = new Vue ({
     set: function (newValue){
         this.introducedTemperature = newValue;
     },
-    computed: {//qwe
+    computed: {
         _0ToK: function (){
-            return this.introducedTemperature + 273.15;
+            return Number(this.introducedTemperature) + 273.15;
         },
         _1ToK: function (){
-            return this.introducedTemperature * 1.8 - 459.67;
+            return (Number(this.introducedTemperature) - 32) * (5/9) + 273.15;
         },
         _2ToK: function (){
             return this.introducedTemperature;
@@ -202,7 +204,7 @@ let temperature = new Vue ({
             return this.introducedTemperature - 273.15;
         },
         kTo_1: function (){
-            return (this.introducedTemperature + 459.67) / 1.8 ;
+            return (Number(this.introducedTemperature) - 273.15) * 9/5 + 32 ;
         },
         kTo_2: function (){
             return this.introducedTemperature;
@@ -213,7 +215,7 @@ let temperature = new Vue ({
 temperatureInputField.addEventListener('keyup', temperatureInputChanged);
 temperatureInputType.addEventListener('click', temperatureInputChanged);
 temperatureOutputType.addEventListener('click', temperatureInputChanged);
-
+//Конвертирует величины
 function temperatureInputChanged(){
     temperature.introducedTemperature = temperatureInputField.value;
     let line = "temperature._" + temperatureInputType.options.selectedIndex + "ToK";
@@ -221,7 +223,7 @@ function temperatureInputChanged(){
     line = "temperature.kTo_" + temperatureOutputType.options.selectedIndex;
     temperatureOutputField.value = eval(line);
 }
-
+//Вызывается по кнопке поменять, меняет поля местами
 reverseValues[2].addEventListener('click', function(){
     let put = temperatureInputField.value;
     temperatureInputField.value = temperatureOutputField.value;
@@ -242,60 +244,36 @@ let geomAngle = new Vue ({
         introducedGeomAngle: timeInputField.value
     },
     set: function (newValue){
-        this.introducedTime = newValue;
+        this.introducedGeomAngle = newValue;
     },
     computed: {
-        _0ToSec: function() {
-            return this.introducedTime;
+        _0ToGrad: function() {
+            return this.introducedGeomAngle * 57.3;
         },
-        _1ToSec: function() {
-            return this.introducedTime * 60;
+        _1ToGrad: function() {
+            return this.introducedGeomAngle;
         },
-        _2ToSec: function() {
-            return this.introducedTime * 60 * 60;
+        gradTo_0: function() {
+            return this.introducedGeomAngle / 57.3;
         },
-        _3ToSec: function() {
-            return this.introducedTime * 60 * 60 * 24;
+        gradTo_1: function() {
+            return this.introducedGeomAngle;
         },
-        _4ToSec: function() {
-            return this.introducedTime * 60 * 60 * 24 * 7;
-        },
-        _5ToSec: function() {
-            return this.introducedTime * 60 * 60 * 24 * 365;
-        },
-        secTo_0: function() {
-            return this.introducedTime;
-        },
-        secTo_1: function() {
-            return this.introducedTime / 60;
-        },
-        secTo_2: function() {
-            return this.introducedTime / 60 / 60;
-        },
-        secTo_3: function() {
-            return this.introducedTime / 60 / 60 / 24;
-        },
-        secTo_4: function() {
-            return this.introducedTime / 60 / 60 / 24 / 7;
-        },
-        secTo_5: function() {
-            return this.introducedTime / 60 / 60 / 24 / 365;
-        }
     },
 })
 
 geomAngleInputField.addEventListener('keyup', geomAngleInputChanged);
 geomAngleInputType.addEventListener('click', geomAngleInputChanged);
 geomAngleOutputType.addEventListener('click', geomAngleInputChanged);
-
+//Конвертирует величины
 function geomAngleInputChanged(){
     geomAngle.introducedGeomAngle = geomAngleInputField.value;
-    let line = "distance._" + geomAngleInputType.options.selectedIndex + "ToSec";
+    let line = "geomAngle._" + geomAngleInputType.options.selectedIndex + "ToGrad";
     geomAngle.introducedGeomAngle = eval(line);
-    line = "distance.secTo_" + geomAngleOutputType.options.selectedIndex;
+    line = "geomAngle.gradTo_" + geomAngleOutputType.options.selectedIndex;
     geomAngleOutputField.value = eval(line);
 }
-
+//Вызывается по кнопке поменять, меняет поля местами
 reverseValues[3].addEventListener('click', function(){
     let put = geomAngleInputField.value;
     geomAngleInputField.value = geomAngleOutputField.value;
