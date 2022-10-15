@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title">Конвертер всяких величин</div>
+    <div class="types">
+        <div id="time" class="selectedType">Время</div>
+        <div id="distance" class="type">Расстояние</div>
+        <div id="temperature" class="type">Температура</div>
+        <div id="geomAngle" class="type">Геометрический угол</div>
+    </div>
+
+    <div class="timeFields">
+        <div>
+            <select class="selectInpValue">
+                <option>сек</option>
+                <option>мин</option>
+                <option>часы</option>
+                <option>сутки</option>
+                <option>неделя</option>
+                <option>год</option>
+            </select>
+            <input type="number" class="field" id="timeInputField">
+        </div>
+        <div class="revert">поменять</div>
+        <div>
+            <input disabled type="number" class="field" id="timeOutputField">
+            <select class="selectOutValue">
+                <option>сек</option>
+                <option>мин</option>
+                <option>часы</option>
+                <option>сутки</option>
+                <option>неделя</option>
+                <option>год</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="distanceFields">
+        <div>
+            <select class="selectInpValue">
+                <option>дюйм</option>
+                <option>мм</option>
+                <option>м</option>
+                <option>км</option>
+                <option>футы</option>
+                <option>мили</option>
+                <option>м.мили</option>
+            </select>
+            <input type="number" class="field" id="distanceInputField">
+        </div>
+        <div class="revert">поменять</div>
+        <div>
+            <input disabled type="number" class="field" id="distanceOutputField">
+            <select class="selectOutValue">
+                <option>дюйм</option>
+                <option>мм</option>
+                <option>м</option>
+                <option>км</option>
+                <option>футы</option>
+                <option>мили</option>
+                <option>м.мили</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="temperatureFields">
+        <div>
+            <select class="selectInpValue">
+                <option>градус Цельсия</option>
+                <option>градус Фаренгейта</option>
+                <option>Кельвин</option>
+            </select>
+            <input type="number" class="field" id="temperatureInputField">
+        </div>
+        <div class="revert">поменять</div>
+
+        <div>
+            <input disabled type="number" class="field" id="temperatureOutputField">
+            <select class="selectOutValue">
+                <option>градус Цельсия</option>
+                <option>градус Фаренгейта</option>
+                <option>Кельвин</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="geomAngleFields">
+        <div>
+            <select class="selectInpValue">
+                <option>радианы</option>
+                <option>градусы</option>
+            </select>
+            <input type="number" class="field" id="geomAngleInputField">
+        </div>
+        <div class="revert">поменять</div>
+        <div>
+            <input disabled type="number" class="field" id="geomAngleOutputField">
+            <label></label><select class="selectOutValue">
+                <option>радианы</option>
+                <option>градусы</option>
+            </select>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

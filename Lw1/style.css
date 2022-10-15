@@ -1,0 +1,71 @@
+body {
+    text-align: center;
+    font-size: 30px;
+}
+
+div {
+    margin: 20px 0px 10px 0px;
+}
+
+.title {
+    font-size: 30px;
+}
+
+.types {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 20px;
+
+}
+
+.type {
+    border-bottom: solid gray;
+    color: gray;
+}
+
+.selectedType {
+    font-size: 30px;
+    border-bottom: solid black 4px;
+    color: black;
+}
+
+
+
+.revert:hover {
+    display:block;
+    transform-origin: center;
+    transform: rotate(180deg);
+}
+
+.timeFields {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.distanceFields {
+    display: none;
+    justify-content: space-evenly;
+}
+
+.temperatureFields {
+    display: none;
+    justify-content: space-evenly;
+}
+.geomAngleFields {
+     display: none;
+     justify-content: space-evenly;
+}
+
+.selectInpValue {
+    font-size: 25px;
+}
+
+.selectOutValue {
+    font-size: 25px;
+}
+
+.field {
+    font-size: 25px;
+}
+
