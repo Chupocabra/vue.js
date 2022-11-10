@@ -1,0 +1,24 @@
+
+.form-group {
+    padding: 10px 20px;
+}
+input {
+    box-sizing:border-box
+}
+img {
+    max-height: 300px;
+    max-width: 300px;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+.display-6 {
+    padding: 4px;
+}

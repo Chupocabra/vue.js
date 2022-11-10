@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Резюме для поиска работы</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container px-2 mb-2">
+    <div class="row g-0 vh-100">
+        <div></div>
+        <div class="col-md-6">
+            <form id="resume_Form">
+                <h1 style="text-align: center">Ваше резюме</h1>
+                <!-- 1. Text Input -->
+                <div class="form-group">
+                    <label for="profession">Профессия</label>
+                    <input type="text" class="form-control" id="profession">
+                </div>
+                <!-- 2. Password -->
+                <div class="form-group">
+                    <label for="city">Город</label>
+                    <input type="text" class="form-control" id="city">
+                </div>
+                <div class="form-group">
+                    <label for="photo">Фото</label>
+                    <input type="text" class="form-control" id="photo">
+                    <small class="form-text text-muted">Ссылка на вашу фотографию</small>
+                </div>
+                <div class="form-group">
+                    <label for="fio">Фамилия Имя Отчество</label>
+                    <input type="text" class="form-control" id="fio" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="number" style=" -webkit-appearance: none;" pattern="[0-9]{11}" class="form-control" id="phone" placeholder="">
+                    <small class="form-text text-muted">Только цифры!</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Электронная почта</label>
+                    <input type="email" class="form-control" id="email" placeholder="">
+                    <small class="form-text text-muted">example@mail.com</small>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Дата рождения</label>
+                    <input type="date" class="form-control" id="birthday" min="1900-01-01" max="2023-01-01">
+                </div>
+                <!-- 3. Single Select -->
+                <div class="form-group">
+                    <label for="education">Образование</label>
+                    <select class="form-control" id="education">
+                        <option>Среднее общее</option>
+                        <option>Незаконченное высшее</option>
+                        <option>Высшее (бакалавр)</option>
+                        <option>Высшее (магистр/специалитет)</option>
+                    </select>
+                </div>
+                <!-- 4. Multiple Select -->
+                <div class="form-group">
+                    <label for="salary">Желаемая зарплата</label>
+                    <select id="salary" multiple class="form-control">
+                        <option value="1">10-50 тыс</option>
+                        <option value="2">50-100 тыс</option>
+                        <option value="3">100-200 тыс</option>
+                        <option value="4">200-500 тыс</option>
+                    </select>
+                </div>
+                <div class="form-group">
+
+                    <div>
+                        <div style="display: flex; flex-direction: row; align-items: baseline;">
+                            <div>Ключевые навыки:&nbsp;</div>
+                            <button id="deleteButton" style="size: 20px" type="button" class="btn btn-outline-secondary btn-sm">(очистить)
+                            </button>
+                            <div class="skills" style="display: inline-block;">
+                                Обучаемость
+                            </div>
+
+                        </div>
+                        <div class="bloko-control-group__main"
+                             style="display: flex; flex-direction: row; align-items: baseline;">
+                            <input id="addSkill" name="KeySkills" maxlength="100" placeholder="Начните вводить здесь"
+                                   autocomplete="off">
+                            <button id="addSkillButton" type="button" class="btn btn-outline-primary btn-block">☑</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="description">О себе</label>
+                    <textarea class="form-control" id="description" rows="5" style="resize: none"
+                              placeholder="Напишите пару слов о себе"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success text-center">Сохранить резюме</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h1 style="text-align: center">Итоговое резюме</h1>
+            <div class="row">
+                <div class="col">
+                    <img id="r_photo" class="img-responsive rounded-circle"
+                         src="https://avatars.mds.yandex.net/i?id=553251865b46b3acd939c54514765cda70c69fea-4120615-images-thumbs&n=13&exp=1">
+                </div>
+                <div class="col">
+                    <div id="r_fio" class="h2">Фамилия Имя Отчество</div>
+                    <div id="r_city" class="h3">г. Город</div>
+                </div>
+            </div>
+            <div class="display-6">
+
+            </div>
+            <div class="row row-cols-2">
+                <div class="display-6 col">
+                    <div>Профессия</div>
+                </div>
+                <div class="display-6 col">
+                    <div id="r_profession"></div>
+                </div>
+                <div class="display-6 col bg-light">
+                    <div>Телефон</div>
+                </div>
+                <div class="display-6 col bg-light">
+                    <div id="r_phone"></div>
+                </div>
+                <div class="display-6 col">
+                    <div>Email</div>
+                </div>
+                <div class="display-6 col">
+                    <div id="r_email"></div>
+                </div>
+                <div class="display-6 col bg-light">
+                    <div>Дата рождения</div>
+                </div>
+                <div class="display-6 col bg-light">
+                    <div id="r_birthday"></div>
+                </div>
+                <div class="display-6 col">
+                    <div>Образование</div>
+                </div>
+                <div class="display-6 col">
+                    <div id="r_education">Среднее общее</div>
+                </div>
+                <div class="display-6 col bg-light">
+                    <div>Желаемая зарплата</div>
+                </div>
+                <div class="display-6 col bg-light">
+                    <div id="r_salary"></div>
+                </div>
+                <div class="display-6 col">
+                    <div>Ключевые навыки</div>
+                </div>
+                <div class="display-6 col" style="font-size: 24px">
+                    <div id="r_skills">Обучаемость</div>
+                </div>
+            </div>
+            <br>
+            <div class="display-6 col bg-light">
+                <div>Описание</div>
+            </div>
+            <div class="display-6 col">
+                <textarea class="form-control" disabled id="r_description" rows="5" style="resize: none"
+                          placeholder="Напишите пару слов о себе"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
